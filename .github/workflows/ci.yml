@@ -116,6 +116,11 @@ jobs:
       - name: Run profile (demo)
         run: npm run profile
 
+      - name: Profile guard
+        # This script will exit non-zero if the profile exceeds default thresholds.
+        # Override with env vars PROFILE_MAX_MEMORY_MB and PROFILE_MAX_DURATION_MS if needed.
+        run: node ./scripts/check_profile_guard.js
+
       - name: Upload profile artifacts
         uses: actions/upload-artifact@v4
         with:

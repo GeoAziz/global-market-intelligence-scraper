@@ -57,5 +57,15 @@ gh release create v0.1.1 --title "GMIS v0.1.1" --notes-file RELEASE.md --assets 
 Troubleshooting
 - If Playwright browsers fail to install on your local OS, run `npm run check:playwright` for diagnostics and consider using system Chromium.
 
+CI guard thresholds
+-------------------
+
+The CI now includes a lightweight profile guard that runs after the `profile` job. It checks the latest `exports/profile_report_*.json` and fails the job if either:
+
+- peak memory (MB) exceeds `PROFILE_MAX_MEMORY_MB` (default: 200)
+- duration (ms) exceeds `PROFILE_MAX_DURATION_MS` (default: 120000)
+
+You can override thresholds in the workflow by setting these environment variables or repository secrets. The guard script is `scripts/check_profile_guard.js`.
+
 Contact
 - For any issues, open a GitHub Issue and include the profile report and demo artifact.
