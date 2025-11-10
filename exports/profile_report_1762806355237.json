@@ -1,0 +1,18 @@
+{
+  "pid": 348198,
+  "exitCode": 0,
+  "durationMs": 989,
+  "peakMemoryBytes": 43364352,
+  "peakCpuPercent": 0,
+  "samplesCount": 1,
+  "samples": [
+    {
+      "t": 513,
+      "memory": 43364352,
+      "cpu": 0
+    }
+  ],
+  "stdout": "Running deterministic fixture smoke-run to produce sample_demo.json\nFixture smoke-run produced 8 items. Output: /home/devmahnx/projects/GMIS/exports/ci_smoke_output_1762806355213.json\nSample demo output ready at /home/devmahnx/projects/GMIS/exports/sample_demo.json\n",
+  "stderr": "\u001b[33mWARN\u001b[39m  Actor.openKeyValueStore() was called but the Actor instance was not initialized.\nDid you forget to call Actor.init()?\n",
+  "timestamp": "2025-11-10T20:25:55.237Z"
+}

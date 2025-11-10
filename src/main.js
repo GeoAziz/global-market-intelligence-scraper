@@ -45,10 +45,15 @@ const log = require('../utils/logger');
         const assets = input.assets || ['forex', 'crypto', 'stocks'];
         const frequency = input.frequency || 'daily';
 
-        log.info('Starting GMIS run', { assets, frequency });
+    log.info('Starting GMIS run', { assets, frequency });
 
-        // Step 1: Scrape data
-        const raw = await runScraper({ assets, maxConcurrency: 5, maxRequestsPerCrawl: input.maxRequestsPerCrawl || 50 });
+    // Configuration from environment
+    const maxConcurrency = parseInt(process.env.MAX_CONCURRENCY || input.maxConcurrency || '5', 10);
+    const batchSize = parseInt(process.env.BATCH_SIZE || input.batchSize || '5', 10);
+    const maxRequestsPerCrawl = parseInt(process.env.MAX_REQUESTS_PER_CRAWL || input.maxRequestsPerCrawl || '50', 10);
+
+    // Step 1: Scrape data
+    const raw = await runScraper({ assets, maxConcurrency, maxRequestsPerCrawl });
 
         // Step 2: Clean
         const cleaned = cleanArticles(raw);
@@ -60,12 +65,32 @@ const log = require('../utils/logger');
             return;
         }
 
-        // Step 3: Summarize in batches (batch size 5)
-        const batchSize = 5;
+        // Step 3: Summarize in batches
+        // Decide summarization mode; allow whole-run early-cutoff based on estimated cost
+        let mode = process.env.MODE || 'free';
+        // If OPENAI mode requested and USD cap is set, estimate total run cost and switch to local if it exceeds cap
+        if (mode === 'openai' && process.env.OPENAI_MAX_USD_PER_RUN) {
+            try {
+                const { estimateTokens } = require('./summarizers/openAISummarizer');
+                const usdPer1k = Number(process.env.OPENAI_USD_PER_1K_TOKENS || process.env.OPENAI_USD_PER_1K || '0.02');
+                let totalTokens = 0;
+                for (const it of cleaned) {
+                    const text = it.text || it.summary || it.title || '';
+                    totalTokens += (estimateTokens(text, process.env.OPENAI_MODEL) || 0) + (parseInt(process.env.OPENAI_DEFAULT_MAX_TOKENS || '200', 10));
+                }
+                const estUsd = (totalTokens / 1000.0) * usdPer1k;
+                if (estUsd > Number(process.env.OPENAI_MAX_USD_PER_RUN)) {
+                    log.warn('Estimated OpenAI run cost exceeds OPENAI_MAX_USD_PER_RUN; forcing local summarizer for safety', { estUsd, cap: process.env.OPENAI_MAX_USD_PER_RUN });
+                    mode = 'local';
+                }
+            } catch (e) {
+                log.warn('Failed to estimate OpenAI run cost; proceeding with configured mode', { err: e && e.message });
+            }
+        }
         const summarized = [];
         for (let i = 0; i < cleaned.length; i += batchSize) {
             const chunk = cleaned.slice(i, i + batchSize);
-            const out = await summarizeBatch(chunk, { batchSize, mode: process.env.MODE || 'free', hfToken: process.env.HF_TOKEN });
+            const out = await summarizeBatch(chunk, { batchSize, mode, hfToken: process.env.HF_TOKEN });
             summarized.push(...out);
         }
         log.info('Summarization complete', { count: summarized.length });

@@ -1,5 +1,5 @@
 const { callHFSummary } = require('./huggingfaceSummarizer');
-const { callOpenAISummary } = require('./openAISummarizer');
+const { callOpenAISummary, estimateTokens: estimateOpenAITokens } = require('./openAISummarizer');
 const { localSummarize } = require('./extractiveSummarizer');
 const pRetry = require('p-retry');
 const CircuitBreaker = require('opossum');
@@ -39,6 +39,31 @@ async function summarizeBatch(items, opts = {}) {
 
     for (let i = 0; i < toProcess.length; i += batchSize) {
         const chunk = toProcess.slice(i, i + batchSize);
+        // Early-cutoff: estimate USD cost for remaining items when using OpenAI
+        if (mode === 'openai' && process.env.OPENAI_MAX_USD_PER_RUN) {
+            try {
+                const maxUsdPerRun = Number(process.env.OPENAI_MAX_USD_PER_RUN);
+                const usdPer1k = Number(process.env.OPENAI_USD_PER_1K_TOKENS || process.env.OPENAI_USD_PER_1K || '0.02');
+                let totalTokens = 0;
+                for (const { item } of chunk) {
+                    const textToSummarize = item.text || item.summary || item.title || '';
+                    totalTokens += (estimateOpenAITokens(textToSummarize) || 0) + (opts.max_tokens || 200);
+                }
+                const estUsd = (totalTokens / 1000.0) * usdPer1k;
+                if (estUsd > maxUsdPerRun) {
+                    log.warn('Estimated OpenAI cost exceeds OPENAI_MAX_USD_PER_RUN; falling back to local summarizer for this batch', { estUsd, maxUsdPerRun });
+                    // force local fallback for this batch
+                    for (const { item, key } of chunk) {
+                        const summary = localSummarize(item.text || item.title);
+                        await saveCachedSummary(key, summary);
+                        results.push(Object.assign({}, item, { summary, summaryModel: 'extractive-fallback' }));
+                    }
+                    continue; // skip normal OpenAI flow for this chunk
+                }
+            } catch (e) {
+                log.warn('Failed to estimate OpenAI cost, proceeding with caution', { err: e && e.message });
+            }
+        }
         if (mode === 'openai' && process.env.OPENAI_KEY) {
             // Prefer OpenAI when explicitly selected
             log.info('Using OpenAI summarizer for chunk', { size: chunk.length });

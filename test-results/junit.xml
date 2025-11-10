@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="5" failures="0" errors="0" time="0.975">
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2025-11-10T20:10:41" time="0.581" tests="1">
+    <testcase classname=" Yahoo scraper extracts title and text from fixture" name=" Yahoo scraper extracts title and text from fixture" time="0.022">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2025-11-10T20:10:41" time="0.128" tests="1">
+    <testcase classname=" coindesk parser extracts JSON-LD article" name=" coindesk parser extracts JSON-LD article" time="0.01">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2025-11-10T20:10:41" time="0.13" tests="1">
+    <testcase classname=" cointelegraph parser extracts JSON-LD article" name=" cointelegraph parser extracts JSON-LD article" time="0.004">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2025-11-10T20:10:41" time="0.055" tests="2">
+    <testcase classname=" cleanText removes extra whitespace and trims" name=" cleanText removes extra whitespace and trims" time="0.003">
+    </testcase>
+    <testcase classname=" cleanArticles removes duplicates and normalizes" name=" cleanArticles removes duplicates and normalizes" time="0.001">
+    </testcase>
+  </testsuite>
+</testsuites>

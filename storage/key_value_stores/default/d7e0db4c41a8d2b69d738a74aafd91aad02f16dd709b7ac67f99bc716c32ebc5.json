@@ -1,0 +1,7 @@
+{
+  "summary": "Alt article body paragraph one. Alt article body paragraph two.",
+  "model": "facebook/bart-large-cnn",
+  "modelVersion": "inference-api",
+  "cachedAt": "2025-11-10T19:55:30.263Z",
+  "ttlSeconds": 86400
+}

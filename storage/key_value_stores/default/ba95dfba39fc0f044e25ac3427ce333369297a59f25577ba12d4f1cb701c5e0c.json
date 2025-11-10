@@ -1,0 +1,7 @@
+{
+  "summary": "Second paragraph with more details and quotes. Market moves as traders react to macro data. Yahoo Finance example paragraph one.",
+  "model": "facebook/bart-large-cnn",
+  "modelVersion": "inference-api",
+  "cachedAt": "2025-11-10T19:55:30.271Z",
+  "ttlSeconds": 86400
+}

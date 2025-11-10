@@ -1,9 +1,51 @@
 const log = require('../../utils/logger');
 const { reserveUsage, incrementUsage } = require('../openaiTracker');
+let tiktoken = null;
+let tiktokenEnc = null;
+let gpt3enc = null;
+try {
+    // Prefer tiktoken for accurate counts when available
+    const { Tiktoken, init } = require('@dqbd/tiktoken');
+    // create encoder for default model; we'll lazy-init on first use
+    tiktoken = { Tiktoken, init };
+} catch (e) {
+    tiktoken = null;
+}
+try {
+    gpt3enc = require('gpt-3-encoder');
+} catch (e) {
+    gpt3enc = null;
+}
 
-// Simple token estimator (rough): 1 token ~= 4 chars
-function estimateTokens(text) {
+// Token estimator: prefer tiktoken, then gpt-3-encoder, else fallback to 1 token ~= 4 chars
+function estimateTokens(text, model) {
     if (!text) return 0;
+    // tiktoken usage
+    if (tiktoken) {
+        try {
+            // lazy init encoder for selected model
+            const targetModel = model || process.env.OPENAI_MODEL || 'gpt-3.5-turbo';
+            if (!tiktokenEnc || tiktokenEnc.model !== targetModel) {
+                // free previous encoder if present
+                if (tiktokenEnc && typeof tiktokenEnc.encoder.free === 'function') {
+                    try { tiktokenEnc.encoder.free(); } catch (e) {}
+                }
+                // create new encoder instance
+                const enc = new tiktoken.Tiktoken(targetModel);
+                tiktokenEnc = { model: targetModel, encoder: enc };
+            }
+            const encoded = tiktokenEnc.encoder.encode(text);
+            const len = encoded.length;
+            return len;
+        } catch (e) {
+            // fallback
+        }
+    }
+    if (gpt3enc && typeof gpt3enc.encode === 'function') {
+        try {
+            return gpt3enc.encode(text).length;
+        } catch (e) {}
+    }
     return Math.ceil(text.length / 4);
 }
 

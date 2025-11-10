@@ -1,0 +1,74 @@
+[
+  {
+    "asset": "coindesk",
+    "title": "Ethereum sees strong inflows",
+    "link": "file:///home/devmahnx/projects/GMIS/test/fixtures/coindesk.html",
+    "date": "2025-11-09T12:00:00Z",
+    "text": "Ethereum recorded strong inflows following major upgrade...",
+    "scrapedAt": "2025-11-10T19:55:30.197Z",
+    "summary": "Ethereum recorded strong inflows following major upgrade."
+  },
+  {
+    "asset": "coindesk",
+    "title": "Ethereum sees strong inflows",
+    "link": "file:///home/devmahnx/projects/GMIS/test/fixtures/coindesk.html",
+    "date": "2025-11-09T12:00:00Z",
+    "text": "Ethereum recorded strong inflows following major upgrade...",
+    "scrapedAt": "2025-11-10T19:55:30.197Z",
+    "summary": "Ethereum recorded strong inflows following major upgrade."
+  },
+  {
+    "asset": "coindesk2",
+    "title": "Coindesk Alt Article Title",
+    "link": "file:///home/devmahnx/projects/GMIS/test/fixtures/coindesk2.html",
+    "date": "2025-11-10T09:00:00Z",
+    "text": "First paragraph of the coindesk article variation.\n\nSecond paragraph with more content.",
+    "scrapedAt": "2025-11-10T19:55:30.245Z",
+    "summary": "First paragraph of the coindesk article variation. Second paragraph with more content."
+  },
+  {
+    "asset": "cointelegraph",
+    "title": "Bitcoin surges on bullish news",
+    "link": "file:///home/devmahnx/projects/GMIS/test/fixtures/cointelegraph.html",
+    "date": "2025-11-10T10:00:00Z",
+    "text": "Bitcoin rallied strongly today after a series of bullish indicators...",
+    "scrapedAt": "2025-11-10T19:55:30.255Z",
+    "summary": "Bitcoin rallied strongly today after a series of bullish indicators."
+  },
+  {
+    "asset": "cointelegraph",
+    "title": "Bitcoin surges on bullish news",
+    "link": "file:///home/devmahnx/projects/GMIS/test/fixtures/cointelegraph.html",
+    "date": "2025-11-10T19:55:30.255Z",
+    "text": "Bitcoin rallied strongly today after a series of bullish indicators...",
+    "scrapedAt": "2025-11-10T19:55:30.255Z",
+    "summary": "Bitcoin rallied strongly today after a series of bullish indicators."
+  },
+  {
+    "asset": "cointelegraph2",
+    "title": "Cointelegraph Alt Article Title",
+    "link": "file:///home/devmahnx/projects/GMIS/test/fixtures/cointelegraph2.html",
+    "date": "2025-11-10T19:55:30.262Z",
+    "text": "Alt article body paragraph one.\n\nAlt article body paragraph two.",
+    "scrapedAt": "2025-11-10T19:55:30.263Z",
+    "summary": "Alt article body paragraph one. Alt article body paragraph two."
+  },
+  {
+    "asset": "yahoo",
+    "title": "Example Yahoo Finance Article Title",
+    "link": "file:///home/devmahnx/projects/GMIS/test/fixtures/yahoo.html",
+    "date": "2025-11-10T12:00:00Z",
+    "text": "Yahoo Finance example paragraph one. Market moves as traders react to macro data.\n\nSecond paragraph with more details and quotes.",
+    "scrapedAt": "2025-11-10T19:55:30.268Z",
+    "summary": "Second paragraph with more details and quotes. Market moves as traders react to macro data. Yahoo Finance example paragraph one."
+  },
+  {
+    "asset": "yahoo",
+    "title": "Example Yahoo Finance Article Title",
+    "link": "file:///home/devmahnx/projects/GMIS/test/fixtures/yahoo.html",
+    "date": "2025-11-10T12:00:00Z",
+    "text": "Yahoo Finance example paragraph one. Market moves as traders react to macro data.\n\nSecond paragraph with more details and quotes.",
+    "scrapedAt": "2025-11-10T19:55:30.268Z",
+    "summary": "Second paragraph with more details and quotes. Market moves as traders react to macro data. Yahoo Finance example paragraph one."
+  }
+]

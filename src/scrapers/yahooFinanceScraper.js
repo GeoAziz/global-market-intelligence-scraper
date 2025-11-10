@@ -5,12 +5,13 @@ function parseYahooFinance(html, url) {
     const articles = [];
 
     // Yahoo Finance article pages often include article body in .caas-body or article tags
-    $('article, .caas-body, .caas-asset-text, .LfP32e, .M(0)').each((i, el) => {
+    // Note: class names with parentheses must be escaped for CSS selectors
+    $('article, .caas-body, .caas-asset-text, .LfP32e, .M\\(0\\)').each((i, el) => {
         const $el = $(el);
         let title = $el.find('h1, h2').first().text().trim() || $('meta[property="og:title"]').attr('content') || $('title').text().trim();
         let link = $el.find('a').first().attr('href') || url;
         try { link = new URL(link, url).toString(); } catch (e) { link = url; }
-        const date = $el.find('time').attr('datetime') || $el.find('.C(#959595)').text() || $('meta[property="article:published_time"]').attr('content') || null;
+    const date = $el.find('time').attr('datetime') || $('meta[property="article:published_time"]').attr('content') || null;
         const text = $el.find('p').map((i, p) => $(p).text()).get().join('\n\n');
         if (title || text) articles.push({ title, link, date, text });
     });
