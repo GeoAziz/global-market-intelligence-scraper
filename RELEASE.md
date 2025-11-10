@@ -69,3 +69,9 @@ You can override thresholds in the workflow by setting these environment variabl
 
 Contact
 - For any issues, open a GitHub Issue and include the profile report and demo artifact.
+
+Release
+-------
+
+The release for this package is available at: https://github.com/GeoAziz/global-market-intelligence-scraper/releases/tag/v0.1.1
+
