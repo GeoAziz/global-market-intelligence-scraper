@@ -1,0 +1,3 @@
+transformers>=4.30.0
+sentencepiece
+torch  # optional: if you have GPU support install a suitable torchvision/cuda build

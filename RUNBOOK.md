@@ -1,0 +1,63 @@
+# RUNBOOK — GMIS Actor
+
+Quick operational instructions for running GMIS locally and on Apify.
+
+Local run
+---------
+1. Install Node dependencies and Playwright browsers:
+
+```bash
+npm install
+npx playwright install --with-deps
+```
+
+If `npx playwright install --with-deps` fails on your OS (missing apt packages
+or unsupported distro), you have two options:
+
+- Install Playwright browsers on a supported runner (CI or a Ubuntu 20.04/22.04 host) where the command succeeds.
+- Or use a system Chromium already present on the host. The actor now supports
+	a fallback to system Chromium. To diagnose which path will be used, run:
+
+```bash
+npm run check:playwright
+```
+
+The command prints JSON diagnostics and exit codes:
+
+- exit 0: Playwright launched successfully (either bundled browsers or system Chromium).
+- exit 2: Playwright cannot launch bundled browsers; system Chromium launch failed.
+- exit 3: Playwright launch failed and no system Chromium found.
+
+If system Chromium is available (for example `/usr/bin/chromium`), the actor
+will attempt to use it with `--no-sandbox` flags. This works for many local
+developer machines and CI environments where installing Playwright's browsers
+is impractical.
+
+2. Provide env vars (use `.env` in development):
+
+```
+HF_TOKEN=...
+MODE=free
+EXPORT=false
+```
+
+3. Run:
+
+```bash
+export GMIS_INPUT='{"assets":["forex","crypto"],"frequency":"daily"}'
+node src/main.js
+```
+
+Monitoring
+----------
+- Metrics available via Prometheus client if you expose them in a local debug server. Counters include `gmis_hf_calls_total`, `gmis_cache_hits_total`, `gmis_articles_processed_total`.
+
+Failure recovery
+----------------
+- If HF calls fail repeatedly, circuit breaker will open and local fallback will be used.
+- Check logs (stdout or rotated files) for error details and stack traces.
+
+Apify deployment
+----------------
+- Add secrets via Apify dashboard (HF_TOKEN, OPENAI_KEY).
+- Use `apify.json` and `schedule.json` to control frequency.

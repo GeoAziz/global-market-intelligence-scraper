@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/home/devmahnx/projects/GMIS/logs/.ed59b2834f6246280289d1ffba48b1423809d9d8-audit.json",
+    "files": [
+        {
+            "date": 1762783191342,
+            "name": "/home/devmahnx/projects/GMIS/logs/gmis-2025-11-10.log",
+            "hash": "a9772cefc8cbffa9d213ee6769a9066d52ca5faeed0aa306484bbe1564c94af2"
+        }
+    ],
+    "hashType": "sha256"
+}

@@ -1,0 +1,9 @@
+{
+	"id": "3jtuWkuQIW8U3ck",
+	"json": "{\"id\":\"3jtuWkuQIW8U3ck\",\"url\":\"https://www.reuters.com/\",\"uniqueKey\":\"https://www.reuters.com\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"asset\":\"https://www.reuters.com/\"}}",
+	"method": "GET",
+	"orderNo": 1762784012002,
+	"retryCount": 0,
+	"uniqueKey": "https://www.reuters.com",
+	"url": "https://www.reuters.com/"
+}

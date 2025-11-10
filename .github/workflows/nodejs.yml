@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install dependencies
+        run: npm ci
+      - name: Install Playwright browsers
+        # This requires the runner to be ubuntu-latest which supports Playwright deps
+        run: npx playwright install --with-deps
+      - name: Run unit & integration tests
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
+        run: npm test
+      - name: Run smoke-run (fixtures)
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
+          DEBUG_HTML: 'false'
+        run: |
+          node -e "const { runScraper } = require('./src/scraper'); (async ()=>{ try { const r = await runScraper({ assets:['https://cointelegraph.com/'], maxConcurrency:1 }); console.log('SMOKE ITEMS:', r.length); process.exit(0);} catch(e){ console.error(e); process.exit(2); } })()"

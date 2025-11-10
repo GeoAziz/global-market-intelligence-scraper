@@ -1,0 +1,7 @@
+{
+  "summary": "Bitcoin rallied strongly today after a series of bullish indicators.",
+  "model": "facebook/bart-large-cnn",
+  "modelVersion": "inference-api",
+  "cachedAt": "2025-11-10T15:03:38.869Z",
+  "ttlSeconds": 86400
+}

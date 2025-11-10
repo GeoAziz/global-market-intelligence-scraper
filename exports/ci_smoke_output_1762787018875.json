@@ -1,0 +1,38 @@
+[
+  {
+    "asset": "coindesk",
+    "title": "Ethereum sees strong inflows",
+    "link": "file:///home/devmahnx/projects/GMIS/test/fixtures/coindesk.html",
+    "date": "2025-11-09T12:00:00Z",
+    "text": "Ethereum recorded strong inflows following major upgrade...",
+    "scrapedAt": "2025-11-10T15:03:38.842Z",
+    "summary": "Ethereum recorded strong inflows following major upgrade."
+  },
+  {
+    "asset": "coindesk",
+    "title": "Ethereum sees strong inflows",
+    "link": "file:///home/devmahnx/projects/GMIS/test/fixtures/coindesk.html",
+    "date": "2025-11-09T12:00:00Z",
+    "text": "Ethereum recorded strong inflows following major upgrade...",
+    "scrapedAt": "2025-11-10T15:03:38.842Z",
+    "summary": "Ethereum recorded strong inflows following major upgrade."
+  },
+  {
+    "asset": "cointelegraph",
+    "title": "Bitcoin surges on bullish news",
+    "link": "file:///home/devmahnx/projects/GMIS/test/fixtures/cointelegraph.html",
+    "date": "2025-11-10T10:00:00Z",
+    "text": "Bitcoin rallied strongly today after a series of bullish indicators...",
+    "scrapedAt": "2025-11-10T15:03:38.867Z",
+    "summary": "Bitcoin rallied strongly today after a series of bullish indicators."
+  },
+  {
+    "asset": "cointelegraph",
+    "title": "Bitcoin surges on bullish news",
+    "link": "file:///home/devmahnx/projects/GMIS/test/fixtures/cointelegraph.html",
+    "date": "2025-11-10T15:03:38.867Z",
+    "text": "Bitcoin rallied strongly today after a series of bullish indicators...",
+    "scrapedAt": "2025-11-10T15:03:38.867Z",
+    "summary": "Bitcoin rallied strongly today after a series of bullish indicators."
+  }
+]

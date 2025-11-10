@@ -1,0 +1,15 @@
+[
+  {
+    "asset": "crypto",
+    "title": "Bitcoin surges on bullish news",
+    "link": "https://cointelegraph.com/sample",
+    "date": "2025-11-10T10:00:00Z",
+    "text": "Bitcoin rallied strongly today after a series of bullish indicators...",
+    "summary": "Bitcoin rallied strongly after bullish indicators drove demand, leading to a sharp price increase.",
+    "summaryModel": "openai",
+    "modelVersion": "gpt-3.5-turbo",
+    "cached": false,
+    "scrapedAt": "2025-11-10T14:00:00Z",
+    "processedAt": "2025-11-10T14:00:10Z"
+  }
+]

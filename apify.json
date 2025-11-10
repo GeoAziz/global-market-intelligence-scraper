@@ -1,0 +1,10 @@
+{
+  "version": "0.1",
+  "name": "GMIS - Global Market Intelligence Scraper",
+  "main": "src/main.js",
+  "buildTag": "",
+  "resources": {
+    "memory": 2048,
+    "timeout": 3600000
+  }
+}

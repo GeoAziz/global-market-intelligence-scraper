@@ -1,0 +1,7 @@
+{
+  "summary": "Ethereum recorded strong inflows following major upgrade.",
+  "model": "facebook/bart-large-cnn",
+  "modelVersion": "inference-api",
+  "cachedAt": "2025-11-10T15:03:38.861Z",
+  "ttlSeconds": 86400
+}

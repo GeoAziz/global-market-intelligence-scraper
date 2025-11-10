@@ -1,0 +1,18 @@
+{
+  "schedules": [
+    {
+      "name": "crypto-forex-hourly",
+      "cron": "0 * * * *",
+      "payload": { "assets": ["crypto", "forex"], "frequency": "hourly" },
+      "concurrency": 1,
+      "delaySeconds": 10
+    },
+    {
+      "name": "stocks-daily",
+      "cron": "0 2 * * *",
+      "payload": { "assets": ["stocks", "macro"], "frequency": "daily" },
+      "concurrency": 1,
+      "delaySeconds": 30
+    }
+  ]
+}

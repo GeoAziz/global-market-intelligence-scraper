@@ -1,0 +1,9 @@
+{
+	"id": "z2rRQoVEVye5mWC",
+	"json": "{\"id\":\"z2rRQoVEVye5mWC\",\"url\":\"https://news.google.com/search?q=crypto\",\"uniqueKey\":\"https://news.google.com/search?q=crypto\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"asset\":\"crypto\"}}",
+	"method": "GET",
+	"orderNo": 1762783191830,
+	"retryCount": 0,
+	"uniqueKey": "https://news.google.com/search?q=crypto",
+	"url": "https://news.google.com/search?q=crypto"
+}

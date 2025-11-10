@@ -1,0 +1,9 @@
+{
+	"id": "uA60LYZegArwML4",
+	"json": "{\"id\":\"uA60LYZegArwML4\",\"url\":\"https://news.google.com/search?q=stocks\",\"uniqueKey\":\"https://news.google.com/search?q=stocks\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"asset\":\"stocks\"}}",
+	"method": "GET",
+	"orderNo": 1762783191831,
+	"retryCount": 0,
+	"uniqueKey": "https://news.google.com/search?q=stocks",
+	"url": "https://news.google.com/search?q=stocks"
+}
