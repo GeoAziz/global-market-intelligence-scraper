@@ -2,24 +2,19 @@
   "name": "gmis",
   "version": "0.1.1",
   "title": "Global Market Intelligence Scraper",
+  "main": "src/main.js",
   "build": {
-    "nodeVersion": "20",
-    "main": "src/main.js"
+    "nodeVersion": "20"
+  },
+  "buildTag": "",
+  "resources": {
+    "memory": 2048,
+    "timeout": 3600000
   },
   "env": {
     "HUGGINGFACE_API_TOKEN": "",
     "OPENAI_API_KEY": "",
     "S3_BUCKET": "",
     "REDIS_URL": ""
-  }
-}
-{
-  "version": "0.1",
-  "name": "GMIS - Global Market Intelligence Scraper",
-  "main": "src/main.js",
-  "buildTag": "",
-  "resources": {
-    "memory": 2048,
-    "timeout": 3600000
   }
 }
